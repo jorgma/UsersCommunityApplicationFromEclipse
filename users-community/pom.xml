@@ -12,6 +12,7 @@
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring.version>3.0.5.RELEASE</spring.version>
     </properties>
 
     <dependencies>
@@ -21,6 +22,52 @@
             <version>6.0</version>
             <scope>provided</scope>
         </dependency>
+        
+        <!-- Spring 3 dependencies -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<!-- <dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency> -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<!-- <dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+		</dependency> -->
+        
+        
+        <!-- TESTS DEPENDENCIES -->
+		<!-- Junit dependency -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<type>jar</type>
+			<scope>test</scope>
+			<optional>true</optional>
+		</dependency>
+		<!-- Spring context dependency for tests -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+			<scope>test</scope>
+		</dependency>
     </dependencies>
 
     <build>
@@ -70,7 +117,13 @@
                     </execution>
                 </executions>
             </plugin>
+            
+            <!-- Tomcat plugin -->
+            <plugin>
+            	<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.1</version>
+            </plugin>
         </plugins>
     </build>
-
 </project>
