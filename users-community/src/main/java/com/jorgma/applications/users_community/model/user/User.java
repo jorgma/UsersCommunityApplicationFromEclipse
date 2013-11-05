@@ -1,18 +1,25 @@
 package com.jorgma.applications.users_community.model.user;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="USER")
-public class User {
+@Table(name="user")
+public class User implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@EmbeddedId
 	private UserId id;
 
-	@Column(name="NAME")
+	@Column(name="name", nullable = false)
 	private String name;
 	
 	

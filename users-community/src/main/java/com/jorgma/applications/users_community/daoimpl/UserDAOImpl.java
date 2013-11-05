@@ -1,29 +1,31 @@
 package com.jorgma.applications.users_community.daoimpl;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.springframework.transaction.annotation.Transactional;
+
 import com.jorgma.applications.users_community.dao.UserDAO;
 import com.jorgma.applications.users_community.model.user.User;
 import com.jorgma.applications.users_community.model.user.UserId;
 
-
-
 public class UserDAOImpl implements UserDAO{
-
-	@Override
+	
+	@PersistenceContext(unitName="community-unit")
+	private EntityManager entityManager;
+	
+	@Transactional(readOnly = false)
 	public void addUser(User user) {
-		// TODO Auto-generated method stub
-		
+		entityManager.persist(user);
 	}
 
-	@Override
+	@Transactional
 	public User getUser(UserId id) {
-		// TODO Auto-generated method stub
-		return null;
+		return entityManager.find(User.class, id);
 	}
 
-	@Override
+	@Transactional(readOnly = false)
 	public void deleteUser(User user) {
-		// TODO Auto-generated method stub
-		
+		entityManager.remove(user);
 	}
-
 }

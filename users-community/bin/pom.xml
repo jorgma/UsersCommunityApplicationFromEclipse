@@ -16,12 +16,12 @@
     </properties>
 
     <dependencies>
-  <!--       <dependency>
+        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>6.0</version>
             <scope>provided</scope>
-        </dependency> -->
+        </dependency>
         
         <!-- Spring 3 dependencies -->
 		<dependency>
