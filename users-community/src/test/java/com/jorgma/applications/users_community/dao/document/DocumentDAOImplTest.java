@@ -30,6 +30,8 @@ public class DocumentDAOImplTest {
 		Document document   = new Document();
 		DocumentId id = new DocumentId("doc1");
 		document.setId(id);
-		document.setContent(new byte[]('n','b'));
+		byte[] bytes = new byte[1000];
+		document.setContent(bytes);
+		dao.save(document);
 	}
 }

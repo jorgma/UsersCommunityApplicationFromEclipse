@@ -6,6 +6,7 @@ import java.util.Arrays;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 @Entity
@@ -18,6 +19,8 @@ public class Document implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@EmbeddedId
 	private DocumentId id;
+	
+	@Lob
 	@Column(name="content", nullable = false)
 	private byte[] content;
 	
