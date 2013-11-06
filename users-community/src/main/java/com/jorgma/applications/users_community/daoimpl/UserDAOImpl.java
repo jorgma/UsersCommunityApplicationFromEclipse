@@ -10,22 +10,28 @@ import com.jorgma.applications.users_community.model.user.User;
 import com.jorgma.applications.users_community.model.user.UserId;
 
 public class UserDAOImpl implements UserDAO{
-	
+
 	@PersistenceContext(unitName="community-unit")
 	private EntityManager entityManager;
-	
+
 	@Transactional(readOnly = false)
-	public void addUser(User user) {
-		entityManager.persist(user);
+	public void save(User user) {
+		if(!userExists(user)) {
+			entityManager.persist(user);
+		}
 	}
 
 	@Transactional
-	public User getUser(UserId id) {
+	public User get(UserId id) {
 		return entityManager.find(User.class, id);
 	}
 
 	@Transactional(readOnly = false)
-	public void deleteUser(User user) {
+	public void delete(User user) {
 		entityManager.remove(user);
+	}
+
+	private boolean userExists(User user) {
+		return get(user.getId()) != null;
 	}
 }

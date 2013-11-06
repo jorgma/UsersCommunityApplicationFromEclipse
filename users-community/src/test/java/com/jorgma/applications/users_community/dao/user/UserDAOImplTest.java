@@ -16,7 +16,7 @@ import com.jorgma.applications.users_community.model.user.UserId;
 public class UserDAOImplTest {
 
 	@Autowired
-	UserDAO userDAO;
+	UserDAO dao;
 	
 	@Before
 	public void init() {
@@ -26,7 +26,7 @@ public class UserDAOImplTest {
 	@Test
 	public void addUser() {	
 		User user  = createUser("Jorge", "myid1");
-		userDAO.addUser(user);
+		dao.save(user);
 	}
 	
 	

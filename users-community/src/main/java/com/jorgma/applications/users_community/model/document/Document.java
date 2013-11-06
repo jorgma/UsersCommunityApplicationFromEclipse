@@ -1,5 +1,6 @@
 package com.jorgma.applications.users_community.model.document;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
 import javax.persistence.Column;
@@ -9,8 +10,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="document")
-public class Document {
+public class Document implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@EmbeddedId
 	private DocumentId id;
 	@Column(name="content", nullable = false)

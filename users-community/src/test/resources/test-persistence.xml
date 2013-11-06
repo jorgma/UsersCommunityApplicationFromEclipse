@@ -6,5 +6,7 @@
 	<persistence-unit name="community-unit" transaction-type="RESOURCE_LOCAL">
 		<class>com.jorgma.applications.users_community.model.user.User</class>
 		<class>com.jorgma.applications.users_community.model.user.UserId</class>
+		<class>com.jorgma.applications.users_community.model.document.Document</class>
+		<class>com.jorgma.applications.users_community.model.document.DocumentId</class>
 	</persistence-unit>
 </persistence>
