@@ -25,7 +25,7 @@ public class User implements Serializable{
 	@Column(name="name", nullable = false)
 	private String name;
 	
-	private Set<Document> documents;
+//	private Set<Document> documents;
 	
 	public UserId getId() {
 		return id;
@@ -43,13 +43,13 @@ public class User implements Serializable{
 		this.name = name;
 	}
 
-	public Set<Document> getDocuments() {
-		return documents;
-	}
-
-	public void setDocuments(Set<Document> documents) {
-		this.documents = documents;
-	}
+//	public Set<Document> getDocuments() {
+//		return documents;
+//	}
+//
+//	public void setDocuments(Set<Document> documents) {
+//		this.documents = documents;
+//	}
 
 	@Override
 	public int hashCode() {
