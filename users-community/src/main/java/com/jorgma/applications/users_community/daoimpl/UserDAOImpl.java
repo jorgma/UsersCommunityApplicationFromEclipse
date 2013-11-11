@@ -1,7 +1,10 @@
 package com.jorgma.applications.users_community.daoimpl;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,5 +36,12 @@ public class UserDAOImpl implements UserDAO{
 
 	private boolean userExists(User user) {
 		return get(user.getId()) != null;
+	}
+
+	@Transactional
+	public List<User> getMany(int amount) {
+		TypedQuery<User> query = entityManager.createQuery("SELECT x FROM User x", User.class);
+		query = query.setMaxResults(amount);
+		return query.getResultList();
 	}
 }
