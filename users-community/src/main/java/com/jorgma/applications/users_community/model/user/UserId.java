@@ -15,6 +15,8 @@ public class UserId implements Serializable {
 	@Column(name="id", nullable = false)
 	private String id;
 
+	public UserId() {}
+	
 	public UserId(String id) {
 		this.id = id;
 	}
