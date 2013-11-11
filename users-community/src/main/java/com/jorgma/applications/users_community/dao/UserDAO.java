@@ -10,4 +10,6 @@ public interface UserDAO {
 	User get(UserId id);
 	List<User> getMany(int amount);
 	void delete(User user);
+	int getNumberOfUsers();
+
 }
