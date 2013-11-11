@@ -1,5 +1,8 @@
 package com.jorgma.applications.users_community.utils.json;
 
+import java.util.List;
+
+import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
@@ -11,6 +14,11 @@ public abstract class UserToJSON {
 		
 	}
 	
+	/**
+	 * 
+	 * @param user
+	 * @return user as a JSON object
+	 */
 	public static JSONObject toJSON(User user) {
 		JSONObject userAsJSON = new JSONObject();
 		
@@ -25,6 +33,19 @@ public abstract class UserToJSON {
 			
 		}
 		return userAsJSON;
-		
+	}
+	
+	/**
+	 * 
+	 * @param users List of users to convert to JSON-format
+	 * @return array of users formatted to JSON
+	 */
+	public static JSONArray toJSONArray(List<User> users) {
+		JSONArray usersAsJSON = new JSONArray();
+		for(User user: users) {
+			JSONObject userAsJSON = toJSON(user);
+			usersAsJSON.put(userAsJSON);
+		}
+		return usersAsJSON;
 	}
 }
