@@ -7,6 +7,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import org.codehaus.jettison.json.JSONArray;
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
 import org.springframework.stereotype.Component;
 
 import com.jorgma.applications.users_community.dao.UserDAO;
@@ -34,4 +36,18 @@ public class GetUsersService {
 		return UserToJSON.toJSONArray(dao.getMany(number));
 	}
 	
+	@GET
+	@Path("/howMany")
+	@Produces(MediaType.APPLICATION_JSON)
+	public JSONObject getNumberOfUsers(){
+		JSONObject numberOfUsers = new JSONObject();
+		int number = dao.getNumberOfUsers();
+		try {
+			numberOfUsers.put("numberOfUsers", number);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return numberOfUsers;
+	}
 }
