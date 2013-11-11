@@ -1,5 +1,6 @@
 package com.jorgma.applications.users_community.dao.user;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,9 +25,15 @@ public class UserDAOImplTest {
 	}
 	
 	@Test
-	public void addUser() {	
-		User user  = createUser("Jorge", "myid1");
+	public void addUserAndRetrieveTheSame() {	
+		String name = "Jorge";
+		String id = "myid1";
+		User user  = createUser(name, id);
 		dao.save(user);
+		
+		User retrievedUser = dao.get(new UserId(id));
+		Assert.assertEquals("User name not the same", name, retrievedUser.getName());
+		Assert.assertEquals("User id not the same", id, retrievedUser.getId().getId());
 	}
 	
 	
