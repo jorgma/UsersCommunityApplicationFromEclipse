@@ -24,6 +24,10 @@ public class UserDAOImpl implements UserDAO{
 		}
 	}
 
+	private boolean userExists(User user) {
+		return get(user.getId()) != null;
+	}
+	
 	@Transactional
 	public User get(UserId id) {
 		return entityManager.find(User.class, id);
@@ -34,14 +38,16 @@ public class UserDAOImpl implements UserDAO{
 		entityManager.remove(user);
 	}
 
-	private boolean userExists(User user) {
-		return get(user.getId()) != null;
-	}
-
 	@Transactional
 	public List<User> getMany(int amount) {
 		TypedQuery<User> query = entityManager.createQuery("SELECT x FROM User x", User.class);
 		query = query.setMaxResults(amount);
 		return query.getResultList();
+	}
+
+	@Transactional
+	public int getNumberOfUsers() {
+		Long number =(Long) entityManager.createQuery("SELECT count(x) FROM User x").getSingleResult(); 
+		return number.intValue();
 	}
 }
